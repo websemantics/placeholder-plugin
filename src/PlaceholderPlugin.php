@@ -19,23 +19,6 @@ use Anomaly\Streams\Platform\Support\Collection;
 class PlaceholderPlugin extends \Anomaly\Streams\Platform\Addon\Plugin\Plugin
 {
     /**
-     * The plugin functions.
-     *
-     * @var PlaceholderPluginFunctions
-     */
-    protected $functions;
-
-    /**
-     * Create a new PlaceholderPlugin instance.
-     *
-     * @param PlaceholderPluginFunctions $functions
-     */
-    public function __construct(PlaceholderPluginFunctions $functions)
-    {
-        $this->functions = $functions;
-    }
-
-    /**
      * Return plugin functions.
      *
      * @return array
