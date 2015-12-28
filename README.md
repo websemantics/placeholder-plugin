@@ -1,6 +1,6 @@
 # Placeholder Plugin
 
-This plugin provides a quick and simple way for crystal-clear image placeholders using SVG.
+This plugin provides a quick and simple way for generating crystal-clear image placeholders using SVG.
 
 Use `{{ placeholder()}}` to generate an image placeholder (100 x 100) by default.
 
