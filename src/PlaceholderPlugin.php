@@ -12,6 +12,10 @@ namespace Websemantics\PlaceholderPlugin;
  * @copyright 2012-2015 Web Semantics, Inc.
  */
 
+use Websemantics\PlaceholderPlugin\Image\Command\GetImage;
+use Anomaly\Streams\Platform\Addon\Plugin\PluginCriteria;
+use Anomaly\Streams\Platform\Support\Collection;
+
 class PlaceholderPlugin extends \Anomaly\Streams\Platform\Addon\Plugin\Plugin
 {
     /**
@@ -39,7 +43,17 @@ class PlaceholderPlugin extends \Anomaly\Streams\Platform\Addon\Plugin\Plugin
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('placeholder', [$this->functions, 'image'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction(
+                'placeholder',
+                function ($params = []) {
+                    return new PluginCriteria(
+                        'render',
+                        function (Collection $options) use ($params) {
+                            return $this->dispatch(new GetImage($options->put('params', $params)));
+                        }
+                    );
+                }
+            ),
         ];
     }
 }
